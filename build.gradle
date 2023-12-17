@@ -2,10 +2,15 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.0'
 	id 'io.spring.dependency-management' version '1.1.4'
+
+	// grpc
+	id 'com.google.protobuf' version '0.9.4'
 }
 
 group = 'jh.study.grpc-spring'
 version = '0.0.1-SNAPSHOT'
+
+def grpcVersion = '1.60.0'
 
 java {
 	sourceCompatibility = '21'
@@ -28,8 +33,31 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 	testImplementation 'org.testcontainers:junit-jupiter'
+
+//	grpc
+	runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
+	implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+	implementation "io.grpc:grpc-stub:${grpcVersion}"
+	compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+
+protobuf {
+	protoc {
+		artifact = "com.google.protobuf:protoc:3.22.3"
+	}
+	plugins {
+		grpc {
+			artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+		}
+	}
+	generateProtoTasks {
+		all()*.plugins {
+			grpc {}
+		}
+	}
 }
