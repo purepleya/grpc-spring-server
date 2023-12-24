@@ -1,7 +1,9 @@
 package jh.study.grpcspring.server.helloworld;
 
 import io.grpc.stub.StreamObserver;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Greeter extends GreeterGrpc.GreeterImplBase {
 
     @Override
