@@ -8,12 +8,8 @@ import java.io.IOException;
 @SpringBootApplication
 public class GrpcServerApplication {
 
-	public static void main(String[] args) throws IOException {
-		var context = SpringApplication.run(GrpcServerApplication.class, args);
-		GrpcServer server = context.getBean(GrpcServer.class);
-
-		server.start();
-
+	public static void main(String[] args) throws IOException, InterruptedException {
+		SpringApplication.run(GrpcServerApplication.class, args);
 	}
 
 }

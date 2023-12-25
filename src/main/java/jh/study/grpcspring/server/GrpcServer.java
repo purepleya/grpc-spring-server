@@ -24,12 +24,11 @@ public class GrpcServer {
 
     private Server server;
 
-    public void start() throws IOException {
+    public void start() throws IOException, InterruptedException {
         var builder = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create());
         services.forEach(builder::addService);
         server = builder.build();
         server.start();
-
         log.info("Server started, listening on " + port);
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -44,6 +43,8 @@ public class GrpcServer {
                 System.err.println("*** server shut down");
             }
         });
+
+        server.awaitTermination();
     }
 
 
