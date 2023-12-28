@@ -1,0 +1,3 @@
+[submodule "src/main/proto/grpc-spring-helloworld-proto"]
+	path = src/main/proto/grpc-spring-helloworld-proto
+	url = https://github.com/purepleya/grpc-spring-helloworld-proto.git
