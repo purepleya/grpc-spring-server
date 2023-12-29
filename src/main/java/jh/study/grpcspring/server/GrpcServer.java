@@ -1,9 +1,6 @@
 package jh.study.grpcspring.server;
 
-import io.grpc.BindableService;
-import io.grpc.Grpc;
-import io.grpc.InsecureServerCredentials;
-import io.grpc.Server;
+import io.grpc.*;
 import jh.study.grpcspring.server.helloworld.Greeter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -20,14 +17,20 @@ public class GrpcServer {
 
     private final int port = 50051;
 
+//    gRPC 서비스들 : jh.study.grpcspring.server.helloworld.Greeter
     private final List<BindableService> services;
+
+    private final List<ServerInterceptor> interceptors;
+
 
     private Server server;
 
     public void start() throws IOException, InterruptedException {
         var builder = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create());
         services.forEach(builder::addService);
+        interceptors.forEach(builder::intercept);
         server = builder.build();
+
         server.start();
         log.info("Server started, listening on " + port);
         Runtime.getRuntime().addShutdownHook(new Thread() {

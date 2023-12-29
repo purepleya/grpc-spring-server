@@ -38,6 +38,6 @@ class GreeterTest {
         HelloReply reply =
                 blockingStub.sayHello(HelloRequest.newBuilder().setName( "test name").build());
 
-        assertEquals("Hello test name22", reply.getMessage());
+        assertEquals("Hello test name", reply.getMessage());
     }
 }
