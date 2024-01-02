@@ -40,8 +40,12 @@ public class GreeterErrorTest {
             blockingStub.sayHello(HelloRequest.newBuilder().setName("error test").build());
         });
 
+
         assertEquals(Status.Code.INVALID_ARGUMENT, exception.getStatus().getCode());
         assertEquals("invalid argument value!!!!", exception.getStatus().getDescription());
 
+        Status erroStatus = Status.fromThrowable(exception);
+        assertEquals(Status.Code.INVALID_ARGUMENT, erroStatus.getCode());
+        assertEquals("invalid argument value!!!!", erroStatus.getDescription());
     }
 }
