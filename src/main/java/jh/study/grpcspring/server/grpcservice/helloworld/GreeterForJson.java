@@ -1,10 +1,13 @@
-package jh.study.grpcspring.server.helloworld;
+package jh.study.grpcspring.server.grpcservice.helloworld;
 
 import io.grpc.BindableService;
 import io.grpc.ServerServiceDefinition;
 import io.grpc.stub.ServerCalls;
 import io.grpc.stub.StreamObserver;
 import jh.study.grpcspring.server.JsonMarshaller;
+import jh.study.grpcspring.server.helloworld.GreeterGrpc;
+import jh.study.grpcspring.server.helloworld.HelloReply;
+import jh.study.grpcspring.server.helloworld.HelloRequest;
 import org.springframework.stereotype.Component;
 
 import static io.grpc.stub.ServerCalls.asyncUnaryCall;

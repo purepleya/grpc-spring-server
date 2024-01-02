@@ -1,10 +1,14 @@
-package jh.study.grpcspring.server.helloworld;
+package jh.study.grpcspring.server.grpcservice.helloworld;
 
 import io.grpc.CallOptions;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
 import io.grpc.testing.GrpcCleanupRule;
 import jh.study.grpcspring.server.JsonMarshaller;
+import jh.study.grpcspring.server.grpcservice.helloworld.GreeterForJson;
+import jh.study.grpcspring.server.helloworld.GreeterGrpc;
+import jh.study.grpcspring.server.helloworld.HelloReply;
+import jh.study.grpcspring.server.helloworld.HelloRequest;
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 

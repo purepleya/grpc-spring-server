@@ -1,7 +1,6 @@
 package jh.study.grpcspring.server;
 
 import io.grpc.*;
-import jh.study.grpcspring.server.helloworld.Greeter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
