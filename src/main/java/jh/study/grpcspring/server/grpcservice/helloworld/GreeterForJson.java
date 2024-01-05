@@ -16,7 +16,7 @@ import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 // 입출력에 Json을 사용하는등의 custom 한 작업이 필요하다면 BindableService 를 직접 구현해서 처리 할 수 있다.
 
 
-@Component
+//@Component
 public class GreeterForJson implements BindableService {
 
     private void sayHello(HelloRequest request, StreamObserver<HelloReply> responseObserver) {

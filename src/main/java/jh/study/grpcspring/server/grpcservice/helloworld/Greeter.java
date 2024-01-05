@@ -26,11 +26,11 @@ public class Greeter extends GreeterGrpc.GreeterImplBase {
             responseObserver.onError(StatusProto.toStatusRuntimeException(errorStatus));
         }
         HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + request.getName()).build();
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+//        try {
+//            TimeUnit.SECONDS.sleep(3);
+//        } catch(Exception e){
+//            e.printStackTrace();
+//        }
 
 
         responseObserver.onNext(reply);

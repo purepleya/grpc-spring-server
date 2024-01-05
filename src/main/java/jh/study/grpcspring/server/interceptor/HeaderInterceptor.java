@@ -1,7 +1,9 @@
 package jh.study.grpcspring.server.interceptor;
 
 import io.grpc.*;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HeaderInterceptor implements ServerInterceptor {
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> serverCall, Metadata metadata, ServerCallHandler<ReqT, RespT> serverCallHandler) {
